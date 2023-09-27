@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{company_name}} Careers</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <style>
+            body {
+                font-family: Roboto;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar-nav a{
+                font-weight:bold;
+                font-size:16px;
+                 font-family: Roboto;
+
+            }
+
+            header {
+
+                color: black;
+                text-align: center;
+                padding: 20px 0;
+                font-weight: bold;
+
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+            }
+
+            .container-with-shadow{
+             box-shadow: none;
+            }
+
+
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+                margin-top: 20px;
+
+            }
+
+            h2 {
+                font-size: 26px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .apply-button {
+                background-color: #333;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-size: 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top:10px;
+                text-decoration: none;
+            }
+
+
+            button:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+
+    <body>
+        {% include 'nav.html' %}
+        <header>
+            <h1><b>{{ company_name }} Careers</b></h1>
+        </header>
+        <div class="container">
+           {% include 'banner.html'%}
+            <div class="row border-bottom" style="margin-top:22px; margin-bottom:22px;padding-bottom:10px;">
+              <p class="col-md-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, quidem facilis rem in minus molestiae? Iste culpa ad numquam facilis tenetur quos, esse molestias assumenda, corrupti, vero dolorum possimus mollitia.Deleniti consequatur similique quas et inventore odit ullam ad pariatur asperiores minima repudiandae officiis aut tempore eligendi placeat iusto aliquam, delectus magni hic doloremque porro natus dicta culpa. Eos, dolore.</p>
+                <div class ="d-none d-md-block col-md-6" >
+                    <img class="img-fluid" style="height:320px;border-radius:10px" src="/static/peopleWorking.jpg " alt="people Working">
+                </div>
+            </div>
+            <h2> <b>Open positions</b> </h2>
+
+            <div >
+                {% for job in jobs %}
+                    <div class="border-bottom  row " style="margin-top:10px">
+                        <div class="col-9">
+                             <div><h4><b>{{ job.title }}</b></h4></div>
+                            <div> <b>Location</b>: {{ job.location }}</div>
+                            {% if job.salary%}
+                            <div  ><b>Salary</b>: {{ job.salary }}</div>
+                            {%endif%}
+                            <div style="margin-bottom:12px"><b>Currency: </b> {{  job.currency  }}</div>
+
+                        </div>
+                        <div class="col-2"><a class="apply-button" href="/job/{{job.id}}">Apply</a></div>
+<!--                         href="mailto:nsrhassan22@gmail.com?subject={{ job.title }}&body=My%20name%20%3D%20%3Cyour%20name%20here%3E%0D%0AMy%20resume%20link%20%3D%20%3Cresume%20link%3E%0D%0AMy%20linkedIn%20link%20%3D%20%3Clinked%20in%3E"-->
+                    </div>
+                {% endfor%}
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center" style="margin-bottom:15px;margin-top:15px;">
+                <a class="btn btn-primary" href="mailto:nsrhassan22@gmail.com?subject=Question%20about%20Job&body=My%20name%20%3D%20%3Cyour%20name%20here%3E%0D%0AYour%20question%20%3D%20%3CQuestion%20here%3E">Contact Us</a>
+            </div>
+
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>

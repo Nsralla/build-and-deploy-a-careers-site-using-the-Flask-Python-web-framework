@@ -1,0 +1,27 @@
+<h4 style="text-align:center;margin-bottom:15px;">Application Form</h4>
+<form action="/job/{{ job_dict['id']}}/apply" method="post">
+    <label>Full Name</label><br>
+    <input type="text"  required name="full_name" placeholder="name"><br>
+
+    <label>Email</label><br>
+    <input type="email" required name="email" placeholder="e.g nsr@gmail.com"><br>
+
+     <label>LinkedIn URL</label><br>
+    <input type="text" name="linkedin_url" placeholder="e.g https/linked.com/in"><br>
+
+    <label>Education</label><br>
+    <textarea name="education" required></textarea><br>
+
+    <label>Work Experience</label><br>
+    <textarea name="work_experience"></textarea><br>
+
+     <label>Resume URL</label><br>
+    <input type="text" name="resume_url"><br>
+
+
+
+
+    <input type="submit" >
+
+
+</form>

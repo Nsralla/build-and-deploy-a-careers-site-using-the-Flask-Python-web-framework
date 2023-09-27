@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <title>{{ job_dict.title }}-Nsralla Careers</title>
+
+        <style>
+
+            p, li{
+
+              font-size:20px;
+            }
+
+            .footer{
+                    margin-top: 200px;
+            }
+                header {
+
+                color: black;
+                text-align: center;
+                padding: 20px 0;
+                font-weight: bold;
+
+            }
+
+
+              input{
+                margin-bottom:20px;
+            }
+
+            /* Reset some default browser styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the form container */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style form headings */
+h4 ,h3{
+ font-weight:bold;
+   color: #333;
+    margin-top: 20px;
+    font-size:24px;
+}
+
+/* Style form labels */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style form input fields */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+        </style>
+
+    </head>
+    <body>
+        {% include 'nav.html' %}
+        {% include 'banner2.html' %}
+        <div class="con " style=" margin-left: 30px;">
+             <header class="border-bottom">
+                    <h1><b>Nsralla Careers</b></h1>
+             </header>
+
+            <h3 >{{job_dict.title}}</h3>
+            <p >{{ job_dict.location}}</p>
+            <h4>responsibilities</h4>
+            <ul>
+                {% for line in job_dict.responsibilities.split("\n")  %}
+                <li>{{line}}</li>
+                {%endfor%}
+            </ul>
+
+            <h4>requirements</h4>
+            <ul>
+                {% for line in job_dict.requirements.split("\n")  %}
+                <li>{{line}}</li>
+                {%endfor%}
+            </ul>
+
+            <div class="border-bottom">
+                  <h4>Job salary</h4>
+            <p> {{ job_dict.currency}} {{ job_dict.salary}}</p>
+            </div>
+
+
+            {%include 'application_form.html'%}
+        </div>
+
+
+        {% include 'footer.html'%}
+        </body>
+</html>
